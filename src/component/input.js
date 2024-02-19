@@ -1,13 +1,15 @@
+
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setInputValue } from '../redux/actions';
+import { setInputValue } from '../redux/inputslice';
 
-const InputComponent = () => {
+const Input = () => {
   const dispatch = useDispatch();
-  const inputValue = useSelector((state) => state.inputValue);
+  const inputValue = useSelector((state) => state.input.value);
 
   const handleInputChange = (event) => {
-    dispatch(setInputValue(event.target.value));
+    const value = event.target.value;
+    dispatch(setInputValue(value));
   };
 
   return (
@@ -23,4 +25,4 @@ const InputComponent = () => {
   );
 };
 
-export default InputComponent;
+export default Input;

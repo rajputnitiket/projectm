@@ -1,12 +1,21 @@
+// ButtonComponent.js
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import { saveData } from '../redux/dataSlice';
 
-const ButtonComponent = () => {
+const Button = () => {
+  const dispatch = useDispatch();
+
   const handleClick = () => {
-    // Handle button click event
-    console.log('Button clicked!');
+    // Dispatch action to save data to Firebase
+    dispatch(saveData());
   };
 
-  return <button onClick={handleClick}>Click me</button>;
+  return (
+    <div>
+      <button onClick={handleClick}>Save Data</button>
+    </div>
+  );
 };
 
-export default ButtonComponent;
+export default Button;

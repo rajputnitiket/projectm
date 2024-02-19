@@ -1,13 +1,15 @@
+// SelectComponent.js
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setSelectValue } from '../redux/actions';
+import { setSelectValue } from '../redux/selectSlice';
 
-const SelectComponent = () => {
+const Select = () => {
   const dispatch = useDispatch();
-  const selectValue = useSelector((state) => state.selectValue);
+  const selectValue = useSelector((state) => state.select.value);
 
   const handleSelectChange = (event) => {
-    dispatch(setSelectValue(event.target.value));
+    const value = event.target.value;
+    dispatch(setSelectValue(value));
   };
 
   return (
@@ -22,4 +24,4 @@ const SelectComponent = () => {
   );
 };
 
-export default SelectComponent;
+export default Select;
