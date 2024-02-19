@@ -14,6 +14,7 @@ function App() {
     <div>
       <h1>Redux Toolkit Shared Components</h1>
       <Input />
+      <Input />
       <Select />
       <Button />
     </div>

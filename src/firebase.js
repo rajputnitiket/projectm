@@ -1,5 +1,7 @@
 
 import { initializeApp } from "firebase/app";
+import { getDatabase, ref, set } from "firebase/database";
+
 import 'firebase/database';
 
 
@@ -16,3 +18,5 @@ const firebaseConfig = {
 
 
 export const app = initializeApp(firebaseConfig);
+export const database = getDatabase(app);
+export const dbref = ref(database, 'server/saving-data/user_input');
