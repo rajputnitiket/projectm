@@ -1,23 +1,25 @@
 // ButtonComponent.js
 import React from 'react';
-import { useDispatch } from 'react-redux';
-import { saveData } from '../redux/dataSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { saveDataToFirebase } from '../redux/dataSlice';
 
-const Button = () => {
+const ButtonComponent = () => {
   const dispatch = useDispatch();
+  const { status, error } = useSelector((state) => state.data);
 
   const handleClick = () => {
-    // Dispatch action to save data to Firebase
-    console.log("hii");
-    dispatch(saveData());
-
+    // Dispatch the async thunk action
+    dispatch(saveDataToFirebase());
   };
 
   return (
     <div>
-      <button onClick={handleClick}>Save Data</button>
+      <button onClick={handleClick} disabled={status === 'loading'}>
+        {status === 'loading' ? 'Saving...' : 'Save Data'}
+      </button>
+      {error && <p>Error: {error}</p>}
     </div>
   );
 };
 
-export default Button;
+export default ButtonComponent;
