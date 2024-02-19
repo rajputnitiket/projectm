@@ -8,7 +8,9 @@ import 'firebase/database';
 
 
 const initialState = {
-    // Define initial state for data slice if needed
+    inputs: [], // Initialize inputs as an array to hold multiple input values with IDs
+    status: 'idle',
+    error: null
 };
 
 
@@ -17,12 +19,14 @@ export const saveDataToFirebase = createAsyncThunk(
     'data/saveDataToFirebase',
     async (_, { getState }) => {
         const { input, select } = getState();
+        const { inputs } = getState().data;
         const dataToSave = {
-            inputValue: input.value,
+            inputValue: inputs,
             selectValue: select.value,
         };
 
         // Save data to Firebase Realtime Database
+        console.log(dataToSave);
         await push(dbref, dataToSave);
         //await database.ref('data').push(dataToSave);
         //await app.database()
