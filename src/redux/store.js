@@ -1,10 +1,10 @@
 
 import { configureStore, createAsyncThunk } from '@reduxjs/toolkit';
 import sharedInputReducer from './sharedInputSlice';
-import inputReducer from './redux/inputSlice';
-import selectReducer from './redux/selectSlice';
-import dataReducer from './redux/dataSlice';
-import firebase from 'firebase/app';
+import inputReducer from './inputslice';
+import selectReducer from './selectSlice';
+import dataReducer from './dataSlice';
+
 
 
 

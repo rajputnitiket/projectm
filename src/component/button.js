@@ -8,7 +8,9 @@ const Button = () => {
 
   const handleClick = () => {
     // Dispatch action to save data to Firebase
+    console.log("hii");
     dispatch(saveData());
+
   };
 
   return (

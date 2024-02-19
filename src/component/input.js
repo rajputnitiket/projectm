@@ -3,7 +3,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setInputValue } from '../redux/inputslice';
 
-const Input = () => {
+const InputComponent = () => {
   const dispatch = useDispatch();
   const inputValue = useSelector((state) => state.input.value);
 
@@ -25,4 +25,4 @@ const Input = () => {
   );
 };
 
-export default Input;
+export default InputComponent;

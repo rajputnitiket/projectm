@@ -1,10 +1,20 @@
 // redux/dataSlice.js
-import { createSlice } from '@reduxjs/toolkit';
-import firebase from 'firebase/app';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { app } from '../firebase';
 
 const initialState = {
     // Define initial state for data slice if needed
 };
+
+
+
+const postData = createAsyncThunk(
+    'user/dataSlice',
+    async (userId, thunkAPI) => {
+        const response = await userAPI.fetchById(userId)
+        return response.data
+    }
+);
 
 const dataSlice = createSlice({
     name: 'data',
@@ -18,7 +28,8 @@ const dataSlice = createSlice({
             };
 
             // Save data to Firebase Realtime Database
-            firebase.database().ref('data').push(dataToSave);
+            console.log(dataToSave);
+            app.database().ref('data').push(dataToSave);
         },
     },
 });
