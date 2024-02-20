@@ -14,23 +14,29 @@ import { useState } from 'react';
   };*/
 
 
-const InputComponent = ({ id }) => {
-  const dispatch = useDispatch();
-  const inputValue = useSelector((state) => state.input[id]);
+const InputComponent = ({ id, type, name, value, placeholder,callbackInputChange,label }) => {
+   //const dispatch = useDispatch();
+  // const inputValue = useSelector((state) => state.input[id]);
 
   const handleInputChange = (event) => {
     const value = event.target.value;
-    dispatch(setInputValue({ id, value }));
+    const name = event.target.name;
+    const obj = {name,value}
+
+    callbackInputChange(obj)
+    //dispatch(setInputValue(obj));
+    // dispatch(setInputValue({ id, value }));
   };
 
   return (
     <div>
-      <label>Input:</label>
+      <label>{label||"Input"}:</label>
       <input
-        type="text"
-        value={inputValue || ''}
+        type={type || "text"}
+        value={value || ''}
+        name={name || ''}
         onChange={handleInputChange}
-        placeholder="Type something..."
+        placeholder={placeholder||"Type something..."}
       />
     </div>
   );

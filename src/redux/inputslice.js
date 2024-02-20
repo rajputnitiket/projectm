@@ -1,12 +1,15 @@
 
 import { createSlice } from '@reduxjs/toolkit';
-
+import { useDispatch, useSelector } from 'react-redux';
 const initialState = {
-    value: '',
-    id: ''
+    // value: '',
+    // id: '',
+    // data:{}
 };
 
-/*
+ 
+
+
 const inputSlice = createSlice({
     name: 'input',
     initialState,
@@ -15,18 +18,11 @@ const inputSlice = createSlice({
             state.value = action.payload;
         },
     },
-});*/
-
-const inputSlice = createSlice({
-    name: 'input',
-    initialState: {},
-    reducers: {
-        setInputValue: (state, action) => {
-            const { id, value } = action.payload;
-            state[id] = value;
-        },
-    },
+    
 });
+
+
+
 
 export const { setInputValue } = inputSlice.actions;
 export default inputSlice.reducer;

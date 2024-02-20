@@ -19,9 +19,9 @@ export const saveDataToFirebase = createAsyncThunk(
     'data/saveDataToFirebase',
     async (_, { getState }) => {
         const { input, select } = getState();
-        const { inputs } = getState().data;
+       // const { inputs } = getState().data;
         const dataToSave = {
-            inputValue: inputs,
+            inputValue: input,
             selectValue: select.value,
         };
 
