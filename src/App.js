@@ -30,9 +30,7 @@ function App() {
 
               <div className=' col-lg-12 form-group-sl'>
                 <Select />
-                <Select />
-                <Select />
-                <Select />
+
               </div>
               <div className=' col-lg-12 form-group-sl'>
                 <Input />

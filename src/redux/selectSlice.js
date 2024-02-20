@@ -1,8 +1,9 @@
-
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-    value: 'option1', // Default value
+    select1: 'option1', // Default value for select1
+    select2: '',        // Default value for select2
+    select3: '',        // Default value for select3
 };
 
 const selectSlice = createSlice({
@@ -10,7 +11,8 @@ const selectSlice = createSlice({
     initialState,
     reducers: {
         setSelectValue: (state, action) => {
-            state.value = action.payload;
+            const { name, value } = action.payload;
+            state[name] = value;
         },
     },
 });
