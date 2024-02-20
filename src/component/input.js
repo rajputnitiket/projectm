@@ -24,7 +24,7 @@ const InputComponent = ({ id }) => {
   };
 
   return (
-    <div>
+    <div className='form-group'>
       <label>Input:</label>
       <input
         type="text"

@@ -2,6 +2,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setSelectValue } from '../redux/selectSlice';
+import '../style.css'
 
 const Select = () => {
   const dispatch = useDispatch();
@@ -13,7 +14,7 @@ const Select = () => {
   };
 
   return (
-    <div>
+    <div className='form-group'>
       <label>Select:</label>
       <select value={selectValue} onChange={handleSelectChange}>
         <option value="option1">Option 1</option>

@@ -1,0 +1,126 @@
+body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    background-color: #f0f0f0;
+}
+
+.form-container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+}
+
+.form-row {
+    width: 100%;
+}
+
+.card {
+    box-shadow: 0px 0px 6px grey;
+    padding: 40px 30px;
+}
+
+.form-group {
+    margin-bottom: 1em;
+    padding: 10px 20px;
+    display: flow;
+    text-align: justify;
+    width: 300px;
+}
+
+.form-group input,
+.form-group-sl select {
+    border: 2px solid #7f7ff1;
+}
+
+.form-group-sl {
+    display: flex;
+    /* justify-content: center; */
+    flex-wrap: wrap;
+}
+
+.form-group-bt {
+    padding: 10px 20px;
+    justify-content: center;
+    text-align: center;
+
+    display: flex;
+
+}
+
+.link {
+    display: inline-block;
+    margin-bottom: 20px;
+    text-decoration: none;
+    color: #0056b3;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.cross-icon {
+    cursor: pointer;
+}
+
+.link img {
+    margin-right: 18px;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5em;
+}
+
+input,
+select {
+    width: 100%;
+    padding: 0.5em;
+    margin-bottom: 1em;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+button {
+    padding: 0.5em 1em;
+    border: none;
+    border-radius: 5px;
+    background-color: #007BFF;
+    color: white;
+    cursor: pointer;
+
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+}
+
+.radio-group {
+    display: flex;
+    align-items: center;
+}
+
+.radio-group label {
+    margin-right: 1em;
+}
+
+.secondarybtn {
+    display: flex;
+    margin-right: 10px;
+    justify-content: space-between;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.btnsbmt {
+    border-radius: 10px;
+    box-shadow: 0 0 6px grey;
+}

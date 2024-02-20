@@ -20,8 +20,8 @@ const ButtonComponent = () => {
   };
 
   return (
-    <div>
-      <button onClick={handleClick} disabled={status === 'loading'}>
+    <div className='secondarybtn'>
+      <button className='btnsbmt' onClick={handleClick} disabled={status === 'loading'}>
         {status === 'loading' ? 'Saving...' : 'Save Data'}
       </button>
       {error && <p>Error: {error}</p>}
