@@ -24,5 +24,6 @@ export const statesRef = ref(database, 'states');
 
 
 export const districtsRef = ref(database, 'districts');
+export const talukasRef = ref(database, 'talukas');
 
 

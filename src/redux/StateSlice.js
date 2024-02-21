@@ -5,13 +5,14 @@ import { fetchStates, fetchDistricts, fetchTalukas } from '../firebaseAPI';
 // Async thunk action to fetch states
 export const fetchStatesAsync = createAsyncThunk('states/fetchStates', async () => {
     const response = await fetchStates();
-    console.log(response);
+
     return response;
 });
 
 // Async thunk action to fetch districts based on stateId
 export const fetchDistrictsAsync = createAsyncThunk('districts/fetchDistricts', async (stateId) => {
     const response = await fetchDistricts(stateId);
+    console.log(response);
     return response;
 });
 
@@ -34,13 +35,14 @@ const stateSlice = createSlice({
     extraReducers: (builder) => {
         builder
             .addCase(fetchStatesAsync.fulfilled, (state, action) => {
-                console.log('Fetched states:', action.payload);
                 state.states = action.payload;
-                console.log('Fetched states1:', state.states);
+
 
             })
             .addCase(fetchDistrictsAsync.fulfilled, (state, action) => {
+                console.log('Fetched district:', action.payload);
                 state.districts = action.payload;
+                console.log('Fetched district1:', state.states);
             })
             .addCase(fetchTalukasAsync.fulfilled, (state, action) => {
                 state.talukas = action.payload;
