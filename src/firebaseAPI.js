@@ -1,35 +1,58 @@
-// firebaseAPI.js
-import { db } from './firebase';
+import { database, statesRef, districtsRef, talukasRef } from './firebase';
+import { getDatabase, ref, set, get, query, orderByChild, equalTo } from "firebase/database";
 
-// Function to fetch states from Firebase
+// Function to fetch states from Firebase Realtime Database
+
 export const fetchStates = async () => {
-    const statesRef = db.collection('states');
-    const snapshot = await statesRef.get();
-    const states = [];
-    snapshot.forEach((doc) => {
-        states.push({ id: doc.id, ...doc.data() });
-    });
-    return states;
+    try {
+        const snapshot = await get(statesRef);
+        const states = [];
+        snapshot.forEach((childSnapshot) => {
+            states.push({ id: childSnapshot.key, ...childSnapshot.val() });
+        });
+
+        return states;
+    } catch (error) {
+        console.error('Error fetching states:', error);
+        throw error;
+    }
 };
 
-// Function to fetch districts from Firebase based on stateId
+
+
+// Function to fetch districts from Firebase Realtime Database based on stateId
 export const fetchDistricts = async (stateId) => {
-    const districtsRef = db.collection('districts').where('stateId', '==', stateId);
-    const snapshot = await districtsRef.get();
-    const districts = [];
-    snapshot.forEach((doc) => {
-        districts.push({ id: doc.id, ...doc.data() });
-    });
-    return districts;
+    try {
+        //const districtsRef = ref(database, 'districts').orderByChild('stateId').equalTo(stateId);
+        const queryRef = query(districtsRef, orderByChild('stateId'), equalTo(stateId));
+        const snapshot = await get(queryRef);
+        const districts = [];
+        snapshot.forEach((childSnapshot) => {
+            districts.push({ id: childSnapshot.key, ...childSnapshot.val() });
+        });
+        console.log('Fetched district:', districts);
+        return districts;
+    } catch (error) {
+        console.error('Error fetching district:', error);
+        throw error;
+    }
+
 };
 
-// Function to fetch talukas from Firebase based on districtId
+// Function to fetch talukas from Firebase Realtime Database based on districtId
 export const fetchTalukas = async (districtId) => {
-    const talukasRef = db.collection('talukas').where('districtId', '==', districtId);
-    const snapshot = await talukasRef.get();
-    const talukas = [];
-    snapshot.forEach((doc) => {
-        talukas.push({ id: doc.id, ...doc.data() });
-    });
-    return talukas;
+    try {
+        //const talukasRef = database.ref('talukas').orderByChild('districtId').equalTo(districtId);
+        const queryRefd = query(districtsRef, orderByChild('districtId'), equalTo(districtId));
+        const snapshot = await get(queryRefd);
+        const talukas = [];
+        snapshot.forEach((childSnapshot) => {
+            talukas.push({ id: childSnapshot.key, ...childSnapshot.val() });
+        });
+        return talukas;
+    } catch (error) {
+        console.error('Error fetching taulkas:', error);
+        throw error;
+    }
+
 };

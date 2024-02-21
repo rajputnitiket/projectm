@@ -12,13 +12,13 @@ admin.initializeApp({
 const db = admin.database();
 
 const statesData = [
-    { name: 'State 1' },
-    { name: 'State 2' }
+    { name: 'State 1', sId: 'stateId1' },
+    { name: 'State 2', sId: 'stateId1' },
 ];
 
 const districtsData = [
-    { name: 'District 1', stateId: 'stateId1' },
-    { name: 'District 2', stateId: 'stateId1' },
+    { name: 'District 1', stateId: 'stateId1', dId: 'districtId1' },
+    { name: 'District 2', stateId: 'stateId1', dId: 'districtId2' },
     // Add more districts here
 ];
 

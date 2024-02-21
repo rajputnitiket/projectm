@@ -1,33 +1,41 @@
+<<<<<<< HEAD
 // App.js
 import React from "react";
 import Input from "./component/Input.js";
 import Select from "./component/Select.js";
 import Button from "./component/Button.js";
+=======
+import React, { useState } from "react";
+>>>>>>> 1da485a52563f939bbf83b6609d361ce7e158ca9
 import { getDatabase } from "firebase/database";
 import { app } from "./firebase.js";
-import "./style.css";
 import { Card } from "react-bootstrap";
+import { useDispatch } from 'react-redux';
+import { setInputValue } from "./redux/inputslice.js";
+import Input from "./component/Input.js";
+import Select from "./component/Select";
+import Button from "./component/Button";
 import lefticon from "./left-arrow.svg";
 import cross from "./cross.svg";
+import DropdownComponent from "./redux/DropdownComponent.js";
 
 const db = getDatabase(app);
 
 function App() {
-  {
-    const [formData, setFormData] = useState({
-      firstName: "",
-      lastName: "",
-      city: "",
-    });
-    const [formSelect, setFormSelect] = useState({ value: "", name: "" });
-    const dispatch = useDispatch();
-    const handleInputChange = (callBackDataName) => {
-      const { name, value } = callBackDataName;
-      setFormData({ ...formData, [name]: value });
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    city: ""
+  });
 
-      dispatch(setInputValue(formData));
-    };
-  }
+  const dispatch = useDispatch();
+
+  const handleInputChange = (callBackDataName) => {
+    const { name, value } = callBackDataName;
+    setFormData({ ...formData, [name]: value });
+    dispatch(setInputValue(formData));
+  };
+
   return (
     <>
       <div className="container form-container ">
@@ -57,6 +65,7 @@ function App() {
             <Card>
               <div className=" col-lg-12 form-group-sl">
                 <Select />
+                <DropdownComponent />
               </div>
               <div className=" col-lg-12 form-group-sl">
                 <Input
