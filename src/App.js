@@ -1,8 +1,8 @@
 // App.js
 import React from "react";
-import Input from "./component/Input";
-import Select from "./component/Select";
-import Button from "./component/Button";
+import Input from "./component/Input.js";
+import Select from "./component/Select.js";
+import Button from "./component/Button.js";
 import { getDatabase } from "firebase/database";
 import { app } from "./firebase.js";
 import "./style.css";
