@@ -58,7 +58,7 @@ function App() {
             <h6>Add New PHC</h6>
             <Card>
               <div className=" col-lg-12 form-group-sl">
-                <Select />
+                
                 <DropdownComponent/>
               </div>
               <div className=" col-lg-12 form-group-sl">

@@ -11,8 +11,10 @@ const selectSlice = createSlice({
     initialState,
     reducers: {
         setSelectValue: (state, action) => {
-            const { name, value } = action.payload;
-            state[name] = value;
+            const { select1, select2, select3 } = action.payload;
+            state.select1 = select1 !== undefined ? select1 : state.select1;
+            state.select2 = select2 !== undefined ? select2 : state.select2;
+            state.select3 = select3 !== undefined ? select3 : state.select3;
         },
     },
 });
