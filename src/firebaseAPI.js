@@ -43,7 +43,7 @@ export const fetchDistricts = async (stateId) => {
 export const fetchTalukas = async (districtId) => {
     try {
         //const talukasRef = database.ref('talukas').orderByChild('districtId').equalTo(districtId);
-        const queryRefd = query(districtsRef, orderByChild('districtId'), equalTo(districtId));
+        const queryRefd = query(talukasRef, orderByChild('districtId'), equalTo(districtId));
         const snapshot = await get(queryRefd);
         const talukas = [];
         snapshot.forEach((childSnapshot) => {

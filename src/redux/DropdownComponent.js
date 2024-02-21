@@ -5,7 +5,7 @@ import { fetchStatesAsync, fetchDistrictsAsync, fetchTalukasAsync } from '../red
 const DropdownComponent = () => {
     const states = useSelector((state) => state.states);
     const districts = useSelector((state) => state.states.districts);
-    const talukas = useSelector((state) => state.talukas);
+    const talukas = useSelector((state) => state.states.talukas);
     console.log('districts:', districts);
     const dispatch = useDispatch();
     const [selectValues, setSelectValues] = useState({
@@ -34,6 +34,7 @@ const DropdownComponent = () => {
     };
 
     const handleDistrictChange = (districtId) => {
+        console.log("hiiiluluu", districtId);
         dispatch(fetchTalukasAsync(districtId));
         setSelectValues({ ...selectValues, select2: districtId, select3: '' });
     };
@@ -59,7 +60,7 @@ const DropdownComponent = () => {
                 <label>Select 2:</label>
                 <select onChange={(e) => handleDistrictChange(e.target.value)} onClick={console.log(districts)} >
                     {districts && districts.length > 0 && districts.map((district) => (
-                        <option key={district.id} value={district.id}>{district.name}</option>
+                        <option key={district.id} value={district.districtId}>{district.name}</option>
                     ))}
                 </select>
             </div>
