@@ -14,27 +14,27 @@ import { useState } from 'react';
   };*/
 
 
-  const InputComponent = ({ id, type, name, value, placeholder,callbackInputChange,label }) => {
+const InputComponent = ({ id, type, name, value, placeholder, callbackInputChange, label }) => {
 
 
-    const handleInputChange = (event) => {
-      const value = event.target.value;
-      const name = event.target.name;
-      const obj = {name,value}
-  
-      callbackInputChange(obj)
-  
-    };
+  const handleInputChange = (event) => {
+    const value = event.target.value;
+    const name = event.target.name;
+    const obj = { name, value }
+
+    callbackInputChange(obj)
+
+  };
 
   return (
     <div className='form-group'>
-      <label>{label||"Input"}:</label>
+      <label>{label || "Input"}:</label>
       <input
         type={type || "text"}
         value={value || ''}
         name={name || ''}
         onChange={handleInputChange}
-        placeholder={placeholder||"Type something..."}
+        placeholder={placeholder || "Type something..."}
       />
     </div>
   );

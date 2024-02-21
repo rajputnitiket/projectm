@@ -20,3 +20,9 @@ const firebaseConfig = {
 export const app = initializeApp(firebaseConfig);
 export const database = getDatabase(app);
 export const dbref = ref(database, 'server/saving-data/user_input');
+export const statesRef = ref(database, 'states');
+
+
+export const districtsRef = ref(database, 'districts');
+
+

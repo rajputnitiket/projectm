@@ -1,10 +1,11 @@
 // stateSlice.js
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { fetchStates, fetchDistricts, fetchTalukas } from './firebaseAPI';
+import { fetchStates, fetchDistricts, fetchTalukas } from '../firebaseAPI';
 
 // Async thunk action to fetch states
 export const fetchStatesAsync = createAsyncThunk('states/fetchStates', async () => {
     const response = await fetchStates();
+    console.log(response);
     return response;
 });
 
@@ -33,7 +34,10 @@ const stateSlice = createSlice({
     extraReducers: (builder) => {
         builder
             .addCase(fetchStatesAsync.fulfilled, (state, action) => {
+                console.log('Fetched states:', action.payload);
                 state.states = action.payload;
+                console.log('Fetched states1:', state.states);
+
             })
             .addCase(fetchDistrictsAsync.fulfilled, (state, action) => {
                 state.districts = action.payload;
@@ -43,6 +47,8 @@ const stateSlice = createSlice({
             });
     },
 });
+
+
 
 export default stateSlice.reducer;
 
