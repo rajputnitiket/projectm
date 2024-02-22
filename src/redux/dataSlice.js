@@ -4,19 +4,26 @@ import { dbref } from '../firebase';
 import { push } from "firebase/database";
 
 const initialState = {
+    data: '',
     status: 'idle',
     error: null
 };
 
+
+
 export const saveDataToFirebase = createAsyncThunk(
     'data/saveDataToFirebase',
-    async (data) => {
+    async ({ status, error, firstName, lastName, valid, select1, select2, select3 }) => {
         try {
             const dataToSave = {
-                inputValue: data.inputValue,
-                selectValue: data.selectValue,
+                firstName: firstName,
+                lastName: lastName,
+                valid: valid,
+                select1: select1,
+                select2: select2,
+                select3: select3
             };
-            console.log("dataslice",dataToSave);
+            console.log("dataslice", dataToSave);
             await push(dbref, dataToSave);
         } catch (error) {
             throw Error('Error saving data to Firebase: ' + error.message);
@@ -24,10 +31,13 @@ export const saveDataToFirebase = createAsyncThunk(
     }
 );
 
+
 const dataSlice = createSlice({
     name: 'data',
     initialState,
-    reducers: {},
+    reducers: {
+        //data: { inputValue, selectValue }
+    },
     extraReducers: (builder) => {
         builder
             .addCase(saveDataToFirebase.pending, (state) => {

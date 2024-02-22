@@ -2,9 +2,9 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-    value: '',
-    name: '',
-    obj: ''
+    firstName: "",
+    lastName: "",
+    valid: "",
 };
 
 /*
@@ -26,7 +26,9 @@ const inputSlice = createSlice({
         setInputValue: (state, action) => {
             console.log("inputsliceAsa:", action.payload);
             //const { id, value } = action.payload;
-            state = action.payload;
+            state.firstName = action.payload.firstName;
+            state.lastName = action.payload.lastName;
+            state.valid = action.payload.valid;
 
         },
     },

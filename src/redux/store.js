@@ -7,6 +7,7 @@ import stateReducer, { fetchStatesAsync } from './StateSlice';
 
 export const store = configureStore({
     reducer: {
+
         input: inputReducer,
         select: selectReducer,
         data: dataReducer,

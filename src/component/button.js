@@ -3,29 +3,46 @@ import { useDispatch, useSelector } from 'react-redux';
 import { saveDataToFirebase } from '../redux/dataSlice';
 import { createSelector } from '@reduxjs/toolkit';
 
-const selectDataState = state => state.data;
-const selectInputState = state => state.input.value;
-const selectSelectState = state => state.select.value;
+// Define selectors for input fields
+const selectFirstName = state => state.input.firstName;
+const selectLastName = state => state.input.lastName;
+const selectCity = state => state.input.city;
 
+// Define selectors for select fields
+const selectSelect1 = state => state.select.select1;
+const selectSelect2 = state => state.select.select2;
+const selectSelect3 = state => state.select.select3;
 
-const selectButtonData = createSelector(
-  [selectDataState, selectInputState, selectSelectState],
-  (data, input, select) => ({ data, input, select })
+// Create a combined selector for input and select data
+const selectInputAndSelectData = createSelector(
+  [selectFirstName, selectLastName, selectCity, selectSelect1, selectSelect2, selectSelect3],
+  (firstName, lastName, valid, select1, select2, select3) => ({
+    firstName,
+    lastName,
+    valid,
+    select1,
+    select2,
+    select3
+  })
 );
 
 const ButtonComponent = () => {
   const dispatch = useDispatch();
-  const { status, error, input, select } = useSelector(selectButtonData);
+  const { status, error, firstName, lastName, valid, select1, select2, select3 } = useSelector(selectInputAndSelectData);
 
-  console.log('Input value:', input);
-  console.log('Select value:', select);
+  console.log('Input values:', { firstName, lastName, valid });
+  console.log('Select values:', { select1, select2, select3 });
 
   const handleClick = () => {
     const data = {
-      inputValue: input,
-      selectValue: select,
+      firstName,
+      lastName,
+      valid,
+      select1,
+      select2,
+      select3
     };
-
+    console.log("buttondata", data);
     dispatch(saveDataToFirebase(data))
       .then(() => {
         console.log('Data saved successfully');

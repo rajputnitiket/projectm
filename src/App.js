@@ -65,7 +65,7 @@ function App() {
               <div className=" col-lg-12 form-group-sl">
                 <Input
                   type={"text"}
-                  label="First Name"
+                  label="*PHC Code"
                   name={"firstName"}
                   value={formData.firstName}
                   placeholder={"Enter First Name"}
@@ -73,16 +73,26 @@ function App() {
                 />
                 <Input
                   type={"text"}
+                  label="*PHC Name"
                   name={"lastName"}
                   value={formData.lastName}
                   placeholder={"Enter lastName"}
                   callbackInputChange={handleInputChange}
                 />
                 <Input
-                  type={"text"}
-                  name={"city"}
-                  value={formData.city}
-                  placeholder={"Enter City"}
+                  type={"radio"}
+                  name={"validity"}
+                  value={"valid"}
+                  //placeholder={"Enter City"}
+                  checked={formData.valid === "valid"}
+                  callbackInputChange={handleInputChange}
+                />
+                <Input
+                  type={"radio"}
+                  name={"validity"}
+                  value={"notValid"}
+                  checked={formData.validity === "notValid"}
+                  // placeholder={"invalid"}
                   callbackInputChange={handleInputChange}
                 />
               </div>
