@@ -1,16 +1,21 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { saveDataToFirebase } from '../redux/dataSlice';
+import { createSelector } from '@reduxjs/toolkit';
+
+const selectDataState = state => state.data;
+const selectInputState = state => state.input.value;
+const selectSelectState = state => state.select.value;
+
+
+const selectButtonData = createSelector(
+  [selectDataState, selectInputState, selectSelectState],
+  (data, input, select) => ({ data, input, select })
+);
 
 const ButtonComponent = () => {
   const dispatch = useDispatch();
-  const { status, error } = useSelector((state) => state.data);
-
-  
-  const { input, select } = useSelector((state) => ({
-    input: state.input.value,
-    select: state.select.value
-  }));
+  const { status, error, input, select } = useSelector(selectButtonData);
 
   console.log('Input value:', input);
   console.log('Select value:', select);
@@ -20,7 +25,7 @@ const ButtonComponent = () => {
       inputValue: input,
       selectValue: select,
     };
-  
+
     dispatch(saveDataToFirebase(data))
       .then(() => {
         console.log('Data saved successfully');
@@ -29,7 +34,6 @@ const ButtonComponent = () => {
         console.error('Error saving data:', err);
       });
   };
-  
 
   return (
     <div className='secondarybtn'>

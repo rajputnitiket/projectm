@@ -1,5 +1,5 @@
 import { configureStore, applyMiddleware } from '@reduxjs/toolkit';
-import {thunk} from 'redux-thunk'; // Import 'thunk' from 'redux-thunk'
+import { thunk } from 'redux-thunk'; // Import 'thunk' from 'redux-thunk'
 import inputReducer from './inputslice';
 import selectReducer from './selectSlice';
 import dataReducer from './dataSlice';
@@ -12,6 +12,11 @@ export const store = configureStore({
         data: dataReducer,
         states: stateReducer,
     },
+
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware().concat(thunk), // Apply 'thunk' middleware
+});
+
+store.subscribe(() => {
+    console.log('Current State:', store.getState());
 });

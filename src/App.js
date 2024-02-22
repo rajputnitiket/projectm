@@ -20,13 +20,14 @@ function App() {
     lastName: "",
     city: "",
   });
-  const [formSelect, setFormSelect] = useState({ value: "", name: "" });
-  
+
+
   const dispatch = useDispatch();
 
   const handleInputChange = (callBackDataName) => {
     const { name, value } = callBackDataName;
     setFormData({ ...formData, [name]: value });
+    console.log("inputvalue", formData);
     dispatch(setInputValue(formData));
   };
 
@@ -58,8 +59,8 @@ function App() {
             <h6>Add New PHC</h6>
             <Card>
               <div className=" col-lg-12 form-group-sl">
-                
-                <DropdownComponent/>
+
+                <DropdownComponent />
               </div>
               <div className=" col-lg-12 form-group-sl">
                 <Input

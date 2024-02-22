@@ -3,7 +3,8 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
     value: '',
-    id: ''
+    name: '',
+    obj: ''
 };
 
 /*
@@ -19,11 +20,14 @@ const inputSlice = createSlice({
 
 const inputSlice = createSlice({
     name: 'input',
-    initialState: {},
+    initialState: initialState,
+
     reducers: {
         setInputValue: (state, action) => {
-            const { id, value } = action.payload;
-            state[id] = value;
+            console.log("inputsliceAsa:", action.payload);
+            //const { id, value } = action.payload;
+            state = action.payload;
+
         },
     },
 });

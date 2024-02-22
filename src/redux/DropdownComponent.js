@@ -66,7 +66,7 @@ const DropdownComponent = () => {
                 <label>Select 3:</label>
                 <select onChange={(e) => handleTalukaChange(e.target.value)}>
                     {talukas && talukas.length > 0 && talukas.map((taluka) => (
-                        <option key={taluka.id} value={taluka.id}>{taluka.name}</option>
+                        <option key={taluka.id} value={taluka.name}>{taluka.name}</option>
                     ))}
                 </select>
             </div>
