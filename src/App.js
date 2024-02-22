@@ -1,14 +1,15 @@
 import React, { useState } from "react";
+import Input from "./component/Input.js";
+import Select from "./component/Select.js";
+import Button from "./component/Button.js";
 import { getDatabase } from "firebase/database";
 import { app } from "./firebase.js";
+import "./style.css";
 import { Card } from "react-bootstrap";
-import { useDispatch } from 'react-redux';
-import { setInputValue } from "./redux/inputslice.js";
-import Input from "./component/Input.js";
-import Select from "./component/Select";
-import Button from "./component/Button";
 import lefticon from "./left-arrow.svg";
 import cross from "./cross.svg";
+import { useDispatch } from "react-redux";
+import { setInputValue } from "./redux/inputslice.js";
 import DropdownComponent from "./redux/DropdownComponent.js";
 
 const db = getDatabase(app);
@@ -17,9 +18,10 @@ function App() {
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
-    city: ""
+    city: "",
   });
-
+  const [formSelect, setFormSelect] = useState({ value: "", name: "" });
+  
   const dispatch = useDispatch();
 
   const handleInputChange = (callBackDataName) => {
@@ -56,8 +58,8 @@ function App() {
             <h6>Add New PHC</h6>
             <Card>
               <div className=" col-lg-12 form-group-sl">
-                <Select />
-                <DropdownComponent />
+                
+                <DropdownComponent/>
               </div>
               <div className=" col-lg-12 form-group-sl">
                 <Input

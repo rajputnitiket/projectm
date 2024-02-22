@@ -18,7 +18,7 @@ const SelectComponent = () => {
       ...prevState,
       [name]: value
     }));
-    dispatch(setSelectValue(name, value));
+    dispatch(setSelectValue(name));
   };
 
   return (
